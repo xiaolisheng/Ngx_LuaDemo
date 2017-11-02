@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lua更新老师书本demo</title>
+<meta charset="utf-8">
+<style>
+    body {
+        width: 100%;
+	height:100%;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+<script src="/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript">
+$(function(){
+   $("#btn").click(function(){
+	$('#pnl').html('')
+	$('#k').css('display','block')
+	$.get("/update?teacher_id="+$("#t_id").val(),function(res,status){
+	     console.log(res)
+	     $('#pnl').html(res)
+	     $('#k').css('display','none')
+	})	
+    })
+})
+</script>
+</head>
+<body>
+<div id="k" style="height:100%;width:100%;background:rgba(238, 238, 238,.7);display:none;z-index: 1;
+    position: absolute;"></div>
+<h1>lua更新老师书本demo</h1>
+   <p>测试id：12d7040d69874a209755b54442e2dc36</p>
+   <input style="width:300px;" id="t_id" type="text" name="asd" placeholder="老师id"/><br/>
+   <button id="btn" type="button" >启动</button><br/>
+   <div id="pnl"></div>
+</body>
+</html>
+
+

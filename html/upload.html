@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>lua上传demo</title>
+<meta charset="utf-8">
+<style>
+    body {
+        width: 35em;
+        margin: 0 auto;
+        font-family: Tahoma, Verdana, Arial, sans-serif;
+    }
+</style>
+</head>
+<body>
+<h1>lua上传demo</h1>
+<form enctype="multipart/form-data"  action="/platform_intf/qimon/v2/upload/uploadnetstudyfile.action" method="post">
+   <input type="text" name="path" placeholder="存储路径"/><br/>
+   <input type="text" name="type" /><br/>
+   <input type="file" name="file" /><br/>
+   <input type="submit" value="上传"/><br/>
+</form>
+</body>
+</html>
+
+
