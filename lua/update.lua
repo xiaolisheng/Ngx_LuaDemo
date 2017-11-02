@@ -19,7 +19,7 @@ if not books then
     return 
 end
 if #books ==0 then
-    ngx.say("已是最新数据")
+    ngx.print("已是最新数据")
 end
 
 local files = com.getfiles(books)

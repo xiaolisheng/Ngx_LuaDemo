@@ -50,7 +50,7 @@ while true do
     if not typ then
         ngx.log(ngx.ERR,"failed to read: "..err)
         response.msg=err
-        ngx.say(json.encode(response))
+        ngx.print(json.encode(response))
         return
     end
     -- ngx.log(ngx.ERR,"read: "..typ.."-------" ..json.encode( res))
@@ -69,7 +69,7 @@ while true do
                 if not file then
                     ngx.log(ngx.ERR,"failed to open file ")
                     response.data=err
-                    ngx.say(json.encode(response))
+                    ngx.print(json.encode(response))
                     return
                 end
             else
@@ -101,12 +101,9 @@ while true do
         else
     end
     elseif typ == "eof" then
-	--ngx.say("<br/>eof!")
-	--ngx.say("<br/>参数:"..json.encode(formdata))
-        --ngx.say("<br/>file upload success<br/><a href='/file'>查看文件</a>")
         ngx.log(ngx.ERR,json.encode(formdata))
         response.code =1
-        ngx.say(json.encode(response))
+        ngx.print(json.encode(response))
         break
     else
     end
