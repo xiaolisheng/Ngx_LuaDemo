@@ -15,8 +15,8 @@ local _M = {
 	db_port = 6379,
 	filepre = "/platform_intf/bookcdndata/",--课堂互动路径前缀
 	cdnfilepre = "/classroom/uploadfile/",--cdn路径前缀
-	osfilepre = "/usr/server/openresty/nginx/html/", --磁盘路径前缀
-	uploadpre = "/usr/server/openresty/nginx/html/platform_intf/" --上传文件存储前缀
+	osfilepre = "/usr/server/openresty/nginx/html/file/", --磁盘路径前缀
+	uploadpre = "/usr/server/openresty/nginx/html/file/platform_intf/" --上传文件存储前缀
 }
 
 function _M.downbook(files)
@@ -77,9 +77,10 @@ function _M.downbook(files)
                         local cdnpath = savepath .. "/" .. file.id
                         
                         local httpc = http.new()
-                        local url = "http://cdn.qimonjy.cn/" .. cdnpath
+                        local url = "http://cdn.qimonjy.cn/" .. cdnfilepre ..cdnpath
                         log(D,"count:"..DICT:get("count").."->"..url.."\n")
                         local res,err = httpc:request_uri(url)
+                        log(D,"status:".. tostring(res.status).."\n")
                         httpc:set_keepalive(100000)
                         if not res then
                             log(E,err)
